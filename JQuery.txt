@@ -1,0 +1,115 @@
+                                                                     JQUERY
+
+
+*It is s library which provide powerful plugins of JS which is used to add extensive features to our website.
+
+*To add jquery into our project or website, we need to copy the CDN file from official website and paste in the head tag or we can download the file and add that file into the script tag, ex-> <script src="CDN.js"></script>  or <script>path of fownloaded file with filename.js</script>.
+
+*Selector work same as we use in css, for id we use # , for class we use . , for tags we just use tage name , to select all we use * , and to perform action on this keyword we simply use this without inverted commas.
+
+* Syntax to use jquery -> for selecting any element in HTML DOM we use $() and to perform action we use $().action() ex->
+$("#demo").hide();
+$(this).hide
+
+*$(document).ready(function() {...
+...
+...}); -> this function allow JS to read all the code first then execute the code, this is because we put our code inside head, and JS execute line by line so selectors wont work so we put our code inside this ready function.ex->
+$(document).ready(function(){
+  $("button").click(function(){
+    $(".test").hide();
+  });
+});
+
+*we use this keyword here to perform action on the selected element ex ->
+$("p").click(function(){
+  $(this).hide();
+});
+NOTE -> the hide and show() methods has 2 optional parameters that are speed(miliseconds) and callback.
+
+
+                                                                          EVENTS
+
+
+* Events are same as in javascript but with different keywords such as click() , mouseenter() , mouseleave() , on() , dblclick() etc. ex ->
+$("p").click(function(){
+  // action goes here!!
+});
+
+
+* hover() method takes 2 funtion in it that is mouseenter and mouseleave ex->
+$("#p1").hover(function(){
+  alert("You entered p1!");
+},
+function(){
+  alert("Bye! You now leave p1!");
+});
+
+
+*on() -> this method is used to attach multiple function into it. ex->
+$("p").on({
+  mouseenter: function(){
+    $(this).css("background-color", "lightgray");
+  },
+  mouseleave: function(){
+    $(this).css("background-color", "lightblue");
+  },
+  click: function(){
+    $(this).css("background-color", "yellow");
+  }
+});
+
+Note -> Here.css property takes 2 argument one is property name and second is property value, both enclosed in quotes and seperated with comma.
+
+* Their are many events like blurr(), focus() , mouseup(), mousedown() etc.
+
+
+                                                                           METHODS
+
+(1) hide()
+(2) show()
+(3) toggle()
+(4) fadeIn()
+(5) fadeOut()
+(6) fadeToggle()
+(7) fateTo() -> $(selector).fadeTo(speed,opacity,callback);
+(8) slideUp()
+(9) slideDown()
+(10)slideToggle()
+
+* .animate() -> syntax, $(selector).animate({params},speed,callback); ex->
+$("button").click(function(){
+  $("div").animate({
+    left: '250px',
+    opacity: '0.5',
+    height: '150px',
+    width: '150px'
+  });
+});
+* we can apply multiple animate properties to a single element, ex->
+$("button").click(function(){
+  var div = $("div");
+  div.animate({height: '300px', opacity: '0.4'}, "slow");
+  div.animate({width: '300px', opacity: '0.8'}, "slow");
+  div.animate({height: '100px', opacity: '0.4'}, "slow");
+  div.animate({width: '100px', opacity: '0.8'}, "slow");
+}); 
+
+(11) stop() -> this methods stop anything when triggered whether its animation,slide,fade,show,hide etc.
+
+                                                                         
+                                                                     CALLBACK METHOD
+
+JavaScript statements are executed line by line. However, with effects, the next line of code can be run even though the effect is not finished. This can create errors.
+
+To prevent this, you can create a callback function.
+
+A callback function is executed after the current effect is finished.
+
+Typical syntax: $(selector).hide(speed,callback); ex->
+$("button").click(function(){
+  $("p").hide("slow", function(){
+    alert("The paragraph is now hidden");
+  });
+});
+
+benefit of using this method is, it is used to let the first function complete and then it executes the second method.

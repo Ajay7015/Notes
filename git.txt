@@ -1,0 +1,68 @@
+1)It is a repositry or collection of project codes.
+
+2)A software has many versions and it is used to snapshot every versions so that it could be easy for us to track the changes.
+
+3)It is also knows as version control.
+
+4)It has GUI and it had command line, it is preffered to use cmd line at first that is git bash.
+
+5)It has commands like linux that is ls,touch,mkdir,cd, cd .. etc.
+
+6)git status -> it is used to tell the status of the folder or file, like is it repositiry or not, whether any changes made into any file or not.
+
+5)git init -> it is used to make any folder a repositiry.
+
+6) git add --a -> It is used to bring all the files to the staging area.
+# git add filename.txt -> It is used to add any specific file to the staging area.ex-> git add Ajay.php
+
+7)staging area-> It is that area where we put our files that are going to be commiting soon.
+
+8)git commit -m "message here" -> it is used to commit and give the message or a short note to it.
+
+9)rm -rf .git -> It will remove the repositiry present inside .git, it is also used to remove specific file which we dont want to track.
+#git rm file_name.txt -> It will remove the file and staged the repositry.
+
+10)git clone url/folder/file name -> this command is used to create a clone of any repositry into our local system.
+
+11) git log -> This cmd is used to see the changes made in the repositry or a breif history of that repositiry.
+
+12)life cycle of file-> before initializing any file they are all untracked meaning git is not aware about the file, we use dit add cmd to make our file unmodified/trakced or in staged area, if we did any modification on any file then tye fill status will be modified but it wont get commited because we have already put that file in staged area, if we want to add again modified file to staged area the we will use git add again.
+
+13)if we want to ignore any file, meaning if we dont want a file to be part of tracked or it should not be the part of repository, then we will simply creaee a file naming .gitignore by command touch .gitignore. and add the file name into this file. by this way any changes made to that file will not be reflected in out repositry.
+	if we want to ignore files which have common names like error.log,error.log1.error.log2 then we can write *.log in .gitignore, it will act on all files having that has .log as common. we can also include a directory or a folder inside .gitignore
+
+14)git diff -> it is used to compare working directory to the staging directory
+
+15)git diff --stage -> It will compare the previous commit to the staged area of the new repositry.
+
+16)git commit -a -m "message/note here" -> It is used to directly commit the file without getting it through staged area, only tracked file will be commited. Untracked file remain as it is.
+
+17)To change the name of a file we can use mv command. syntax git mv file_name new_file_name , so it will change the name and move the file to staged area.
+#This command is also used to move it from one directory to another.
+
+18)git rm --cached file_name -> This cmd is used to change the status of a file from tracked to untracked. and it will staged the changes and show it is removed but it is not removed from the directory.
+
+19)git log -p -> It will show us the exact changes made in every commit. like what code is removed and added.
+
+20) + -> shows addition and - shows deletion
+
+21) git log --stat -> It will show all the changes in breif.
+
+22)git log pretty=oneline / short/full-> It will show all the commits in one line. we can use short and full also after pretty.
+
+23)git log --since=2.days -> It will show the commit from the past 2 days.
+
+24)git commit --ammend -> this will open the vim editor and we can make changes to the comments and messages.
+
+25)git restore --staged -> It is used to bring staged file to unstaged condition.
+
+26)git checkout -- file_name -> suppose you modified a file by mistake that has some important information and you want previous saved data back then this cmd is very helpful. This cmd will revert the changes back to orignal.
+        #git checkout -f -> It is used to undo all the chanages we did in all the files.
+
+27)GITHUB -> It is a website or a server that hosts the repositry and we can store our repositry here so that it can be shared with the whole dev team. 
+
+28)git remote -> It shows our repositry inside github. for this we have to run a command that is given by github when we create a repositry, it is something like this; git remote add origin git@github.com name_of_repositry. So this is used to do operations on your repositry and it name as origin.
+
+29)git remote -v -> Now this is used give us the 2 files that is used to fetch/pull and push.
+
+30)

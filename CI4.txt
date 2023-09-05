@@ -1,0 +1,210 @@
+1)It is a PHP framework which work on MVC. it stands for model view controller. 
+So here we write our html css and js in view folder and in controller we write class and methods and return that view html files so that it can be viewed in the browser. for that we use view() function.
+suppose we have one.html file in view and we have to display it in browser then we will make a file in controller starting with a capital letter and class name inside it should be the same as file name. 
+ex-> class Display extends BaseController
+        public function index(){
+               return view('one');
+               }
+so this is how it works. 
+
+2) If we want to display data in view than we have to make an associative array inside controller file inside a method, ex-> 
+
+$data = ['a' => 10,'b' => 20,'c' => "yo"];
+return view('one', $data);
+
+so we have to use keys in html file to display it and enclosed it in <?php $a; $b; ?>, this will display the data.
+
+3) Their are many things inside ci4 like .env, datbase, filters, controllers, view, public and many more. 
+
+4) To create a table we have to use 'use' keyword ex-> 
+
+use CodeIgniter\View\Table;
+
+$table = new Table();
+ $table = new Table();
+        $data = [
+            ['name','id','Techno'],
+            ['Ajay',001,'Developer'],
+            ['Jojo',001,'Developer']
+        ];
+        echo $table->generate($data);
+so a table will be visible inside a html page   
+
+                OR
+
+
+  $table->setHeading(['Name','id','Tech']);
+        $table->addRow(["Ajay",001,"Developer"]);
+        $records['users'] = $table->generate();
+
+        return view('entry',$records);
+# we will use $users in view file to render this data into view.
+
+                 
+
+                                                                     VIEW PARSER
+
+1)At first we have to create an instance of praser in our method ex->  
+public function getIndex()
+    {
+        $praser = Config\Services::praser();
+    }
+#we will use render method to show the output.
+
+2) It is nothing but subsitution the variables inside curly braces without using proper php format ; <?php $a ?>, we could simply write {a} and it will execute. 
+
+3)their are two types- single parser and nested parser 
+*ex of single parser -
+ public function getIndex()
+    {
+        $parser = \Config\Services::parser();
+        $data = [
+            'title' => 'Welcome',
+            'content' => 'hello how are you!?'
+        ];
+       return $parser->setData($data)->render('entry');
+
+    }
+
+*if we want to display the nested data then we will use looping technique by keeping the array key as starting and ending tag and it will be iterated one by one ex-//controller
+$data = [
+    'blog_title'   => 'My Blog Title',
+    'blog_heading' => 'My Blog Heading',
+    'blog_entries' => [
+        ['title' => 'Title 1', 'body' => 'Body 1'],
+        ['title' => 'Title 2', 'body' => 'Body 2'],
+        ['title' => 'Title 3', 'body' => 'Body 3'],
+        ['title' => 'Title 4', 'body' => 'Body 4'],
+        ['title' => 'Title 5', 'body' => 'Body 5'],
+    ],
+];
+//view
+<html>
+<head>
+    <title>{blog_title}</title>
+</head>
+<body>
+    <h3>{blog_heading}</h3>
+
+    {blog_entries}
+        <h5>{title}</h5>
+        <p>{body}</p>
+    {/blog_entries}
+
+</body>
+</html>
+so this is how we can itrate through nested data
+
+
+                                                                    DATABASE(Display and connect)
+
+1) First we need to create a database in xampp
+
+2) we need to create a instance for a database inside a controller,ex- $db = \Config\Database::connect(); , so by this method we have connected our database to ci4. 
+
+3) To execute a query we have to do following, $query = $db->query('select * from emp');
+
+4) To show a record we have to use getresult() method, $result = $db->getResult() ; , we can also use echo '<pre>' to view record in more readable manner.
+
+5) ex-> $db = \Config\Database::connect();
+        $query = $db->query('select * from emp');
+        $result = $query->getResult()
+        echo "<pre>";
+        print_r($result);
+
+6) we can connect multiple databases also by copying the details of first database inside the config folder with the name of database file and then we will change the name of the database from default to user's choice name and then create an instance , ex-> $db = \Config\Database::connect('user's choice name');
+
+
+7) while creating model we always keep this on top of the file-
+namespace App\Models;
+use CodeIgniter\Model;
+
+then we will create the class with the name of file name extends model and then we will write a function. 
+
+8) We can display the data directly from the database bu using mvc model for example
+first we will write this into model file -
+
+ public function  dynamic(){
+        $db = \Config\Database::connect();
+        $query = $db->query('select Breakfast,Lunch,Dinner from foodie');
+        $result = $query->getResult();
+        if(count($result)>0){
+            return $result;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+then we will create a controller file -
+
+ public function dyno(){
+        $star = new Demo();
+        $data['users'] = $star->dynamic();
+        return view('entry',$data);
+    }
+
+then we will display the data using loops or if statement like this-
+
+?php foreach($users as $user): ?>
+<tr>
+      <td><?= $user->Breakfast; ?></td>
+      <td><?= $user->Lunch; ?></td>
+      <td><?= $user->Dinner; ?></td>
+      </tr>
+      <?php endforeach ?>
+
+so in this way you can display the data dynamically from database to view.
+
+
+                                                                         HELPER
+
+1) To load a helper into ci4 we need to use the helper() method and pass the helper name, ex- helper(form);. We can also load the multiple helpers at the same time, ex- helper(['form','cookie','html']);
+
+2) Some helper methods are, form_open(); , this will open and close the form tag. form_input(); , this will add the input tag and we can pass parameters to this such as name of input tag and value of that input ex- form_input('username','Ajay'); .
+
+3) If we want to create our own helper then name of that file should end with _helper, ex- test_helper.php
+
+4) They are always loaded inside controller and it is prefarable to load them inside the constructor.
+
+
+                                                                      DATABASE(Insert Data)
+
+To insert the dynamic data into database, we have a following methods-
+$this->request->getVar('name',filter);
+#name-> this is then name attribute of input tag; from where we are getting the values and in second parameter we can apply filter it is optional.
+
+But if we have to import multiple data into database then we have to use array method-
+$data = [
+'name' => $this->request->getVar('Name',filter),
+'surname' => $this->request->getVar('surName',filter);
+]
+#here we will take database col_name as key and storing alue in the value. 
+
+after this we will create a model into models and create a function to save data into database
+ex->
+function saveData($Data){
+$db = \config\database::connect();
+$builder  = $db->table('table_name');
+$res = $builder->insert($Data) }
+
+To insert the thottler class into our code then we have to do the following(thotller means to block the ip adress or limit some actions. like 4 attempts to login or etc).
+
+$throttler = \Config\Services::throttler();
+$allow = $throttler->check('login',4,MINUTES);
+
+we have to set this code before access to database in our code or before verifying the password for the login system.
+
+
+
+
+
+
+
+
+
+                                                                   
+
+
+

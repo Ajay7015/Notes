@@ -1,0 +1,613 @@
+(1) To change font style-> document.getElementById("demo").style.fontSize = "35px";
+
+(2) To change HTML content -> document.getElementById("demo").innerHTML = 'write something' 
+
+(3) To change the source of the image -> document.getElementById('myImage').src='pic_bulboff.gif'
+
+(4) To hide HTML content -> document.getElementById("demo").style.display = "none";
+
+(5) To show hidden content -> document.getElementById("demo").style.display = "block";
+
+(6) If we place JS inside HTML doc then we will use script tag <script> JS </script>, If we want to place JS outside the HTML content then we will not use <script> tag in our myScript.js file. we will provide the source of JS file <script src="myScript.js"></script> in our HTML doc.
+
+(7) Ways to display output using JS ->
+*Writing into an HTML element, using innerHTML.
+*Writing into the HTML output using document.write().
+NOTE-> Using document.write() after an HTML document is loaded, will delete all existing HTML
+*Writing into an alert box, using window.alert() or alert().
+*Writing into the browser console, using console.log().
+
+(8)We do not have any print statemet to print output, IN JS we use print statement to print the whole content of the browser into hardcopy.
+
+(9)JS is case-sensitive.
+
+(10) A JavaScript name/identifier must begin with:
+
+A letter (A-Z or a-z)
+A dollar sign ($)
+Or an underscore (_)
+
+(11) comments- we use // for single line comments and /* this is multiline cmnt */
+
+(12) If you put a quote or double quote in the number then it will act as concatinate operator ex-> 5+6+"8"='118', If you put quote number in middle or in starting then till that value it will be treated as addition operator after that it will be consider as concatination ex-> "5"+6+8=514, 5+'9'+8=598
+
+
+                                                                 VARIABLE DECLARE
+
+(13) let -> It is a keyword used to declare a variable, array or any object, It has block scope and we cannot re-declare it or overwrite it.
+If we define a variable outside a scope as 10 and then declare the variable inside the block as 2 then outside its value be remain 10 only.                ex--1
+ let x = 10;
+// Here x is 10
+
+{
+let x = 2;
+// Here x is 2
+}
+
+// Here x is 10
+
+ex--2
+var x = 2;   // Allowed
+let x = 3;   // Not allowed
+
+{
+let x = 2;   // Allowed
+let x = 3;   // Not allowed
+}
+
+{
+let x = 2;   // Allowed
+var x = 3;   // Not allowed
+}
+
+(14) var -> var has global scope it can be re-declared anywhere, whether inside or outside the block.
+
+(15) const --> It is used to declare a constant variable, we cannot re-assign the variable but we can change its properties.value should be assigned at the time of declearition. ex- const x = 7; 
+
+                                                             OPERATORS
+(16) Mostly same as python but some exceptions are -
+(a) === it is used to check whether the operands are same and having the same data type also
+(b) !== Not equal value or not equal type
+(c) ternary operator(?): 
+syntax-> condition ? value if true : value if false
+ex-> Input: let result = (10 > 0) ? true : false;
+Output: true
+
+Input: let message = (20 > 15) ? "Yes" : "No";
+Output: Yes
+
+(17) LOGICAL OPERATORS
+Operator	Description
+     &&	        logical and
+     ||	        logical or
+      !	        logical not
+NOTE -> (a) typeof	Returns the type of a variable ex -> typeof(5), typeof("Ajay")
+        (b) instanceof	Returns true if an object is an instance of an object type
+
+                                                         DATA TYPES
+
+1. String - we use "" or '' to represent strings
+2. Number - we use Bigint to store any number whether float or double or real or whole
+3. Bigint
+4. Boolean - true, false
+5. Undefined - a variable defined without a value
+ex-> let car;
+     let car=undefined;
+both the examples represent undefined value
+6. Null
+7. Symbol
+8. Object
+
+The Object Datatype
+The object data type can contain:
+
+1. An object - like a dictionary, {name:'Ajay', age:25};
+*It is always recommend do describe object with const variable datatype and keys should be literals according to industrial standards.
+*the key:value pair is known as property in JS, to access a property in JS we use -> object_name.property_name 0r object_name["Property_name"]
+*We can also store a function as a value in object ex-> {name: function myName(){return name;}}
+2. An array - like a list, ['ajay',25];
+3. A date
+
+                                                        FUNCTIONS
+It is a block of codes used to do specific tasks
+syntax-> function myFunction{ code here }
+To call a function we use-> myFunction()
+If we want to return a value then we need to store the function in a variable 
+Variable describe inside a function will have a limited scope to that block only
+It follows the actual and formal arguments as we have in Python 
+Ex-> function myFun{document.getElementById('demo').innerHTML="How are you";}
+        
+                                                       EVENTS
+Whenever we perform some action on HTML then this is considered as an event in JS ex- onclick,onmouseover etc.
+some events are -
+
+Event	          Description
+onchange	An HTML element has been changed
+onclick	        The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload	        The browser has finished loading the page
+
+
+                                                       STRING BUILTS IN
+
+*Strings are immutable in nature thus it will give you new string everytime you use a builtin.
+
+*String is a container used to store a text value but we can store anything in it. ex-> "ajay.sharma18797@gmail.com"
+*We can use double and single quote to describe it.
+*ex-> "this is a great way to "illustrate" this example" , in this JS will get confused as we put double quotes in middle and we used it to describe our string also so to avoid it we use backslash operator\. ex-> "this is a great way to \"illustrate\" this example"
+It has many build-in methods some of them are->
+
+(a) length-> let name = 'Ajay Sharma';
+console.log(name.length);
+
+(b) slice() -> it is used to return the part of string as a new string, syntax-> string_name.slice(start,end) , string_name.slice(start)
+ex-> let a = "Hi how are you"
+     let b = a.slice(0,2) = "Hi" 
+     let c = a.slice(-4) = 'you'
+     let d = a.slice(10) = 'you'
+
+(c)substring() -> substring() is similar to slice().The difference is that start and end values less than 0 are treated as 0 in substring().Syntax ->string_name.substring(start,end)
+
+(d)substr() -> substr() is similar to slice().The difference is that the second parameter specifies the length of the extracted part. Syntax -> string_name.substr(start,length) NOTE- if no length is given then it will slice out the entire string
+
+(e) replace() -> It will replace a text within a string to a desired text, syntax- string_name.replace("word","desired_word")
+ex -> let a = "hi how are you"
+      let b = a.replace("hi","yo!")
+NOTE #To remove the sensivity of the text we use /i. ex - > let c.replace(/HI/i,"yo!")
+By default it will only replace first match in the string, if you want to replace every character with the desired keyword we use /g ex -> a.replace(/h/g,"w")
+
+NOTE# If we want to search every character or word in a string then we use /g and if we want to remove case insensitivity then we use /i with /g, ex-> /gi
+
+(f) replaceAll() -> It allows you to change every word or text in the string.
+
+(g) toUpperCase() -> It will convert the string to uppercase. ex -> let text1 = "Hello World!";
+                                                                    let text2 = text1.toUpperCase();
+
+(h) to LowerCase()->It will convert string to lowercase. ex -> let text1 = "Hello World!";
+                                                               let text2 = text1.toLowerCase();
+
+(i) concat()-> It is use to combine 2 strings. ex->let text1 = "Hello";
+                                                   let text2 = "World";
+                                                   let text3 = text1.concat(" ", text2);
+                                               ex2-> text = "Hello".concat(" ", "World!");
+
+(j) padStart() -> It is used to pad a given string with desired character at the start of the string, It is only applicable to string datatype.
+                  syntax -> string_name.padStart(length,'desired char')
+                  ex -> let text = "5";
+                        let padded = text.padStart(4,"0");
+
+(k) padEnd() -> It is used to pad a given string with desired character at the end of the string, It is only applicable to string datatype.
+                  syntax -> string_name.padStart(length,'desired char')
+                  ex -> let text = "5";
+                        let padded = text.padEnd(4,"0");
+
+(l) trim() -> This method removes all the white space from the start and end of string
+ ex -> let a="    hi     "
+       let b.trim()
+
+(m) trimStart() -> It will remove white space onl from the start of string
+
+(n) trimEnd() -> It will remove white space only from the end of string
+
+(o)charAt()-> It will return the index of a given char
+ex->let text = "HELLO WORLD";
+    let char = text.charAt(0);
+
+(p)charCodeAt() -> It will return a ASCII value of a character
+ex->let text = "HELLO WORLD";
+    let char = text.charAt(0);
+
+(q)split() ->It converts string to an array. symtax-> string_name.split("seprator"),ex->stringName.split(","), This will split the string at every commas
+If we dont provide double commas then it will take the whole string as a single character of an array
+           
+                                                              STRING SEARCH BUILTINS
+(a)indexOf() -> It will return the first occurance of a searched word,If we give second parameter as a number in this method then it will begin it;s search from that index to the end of the string
+                ex-> let text = "what the heck"
+                     let indes = text.indexof("the")
+It will return -1 if it didnt find the searched word
+
+(b) lastIndexOf -> It returns the first character of the last searched word. if we give the second parameter as a number to this method then it will start search from that index to the starting point ; from right to left. syntax text.lastIndexOf("word",10)
+*It will return -1 if it didnt find the searched word
+
+(c)search() -> same as indexOf() method. the only difference is- The search() method cannot take a second start position argument.
+                                                                 The indexOf() method cannot take powerful search values (regular expressions).
+
+(d)match() -> It will return an array with the string that we searched. It accept /gi expression.
+
+(e)matchAll()-> This method returns an iterator containing the results of matching a string against a string (or a regular expression).
+
+(f)include() -> It will return a boolean value that whether the substring is present or not.
+
+(g)startsWith() ->returns a bool value if the string start with the given word or not
+
+(h)endsWith() -> returns a bool value if a string ends with the given value or not 
+ 
+                                                               TEMPLATE LITERALS
+*It is a type of a string but it used back tics(`)  as a syntax. ex-> let a = `Hi how are you?`; we can use double and single quotes as well inside the back tics and we can write multiple lines using this ex-> let a = ` hi,
+                                                               how are you?
+                                                               i am fine.
+*We can do interpolation that means fstrings as in python.syntax ${ }. ex-> let firstName = "John";
+                                                                            let lastName = "Doe";
+                                                                            let text = `Welcome ${firstName}, ${lastName}!`;
+
+                                                                       ex2-> let price = 10;
+                                                                             let VAT = 0.25;
+                                                                             let total = `Total: ${(price * (1 + VAT)).toFixed(2)}`;
+                                                                       NOTE - We can also use expression in this interpolation
+
+                                                                NUMBERS
+*Except + operator every other operator will convert string to number in maths expression and result will be a number. Ex-> "10"*"8*=80
+* NaN - It means not a number. inNaN(x) it is a operator which is used to show if a result is NaN or not.
+*Infinity (or -Infinity) is the value JavaScript will return if you calculate a number outside the largest possible number.Division by 0 also generates Infinity.
+
+                                                                NUMBERS METHOD
+
+*toString()	Returns a number as a string. ex->
+let x = 123;
+x.toString();
+(123).toString();
+(100 + 23).toString();
+
+*toExponential()	Returns a number written in exponential notation
+
+*toFixed()	Returns a number written with a number of decimals and returns a roundoff value 
+
+*toPrecision()	Returns a number written with a specified length and returns a roundoff value in sgtring
+
+*ValueOf()	Returns a number as a number
+
+*Number()	Returns a number converted from its argument. ex-> Number("10"), It will return NaN if string would not be a number
+
+*parseFloat()	Parses its argument and returns a floating point number
+
+*parseInt()	parseInt() parses a string and returns a whole number. Spaces are allowed. Only the first number is returned:
+
+                                                                ARRAY
+*It is same as list in python
+*It is always preffered to use const while declaring an array
+*syntax-> const Arr=[]
+*to call the value we use indexing, Arr[0]- it will call the first element, Arr[Arr.length-1]- this will return last element.
+*We can change the value of an array, Arr[0] = "Ajay", this will update the first value as Ajay in an Array
+* We can store anything; function,object,numbers,string,arrays in an Array.
+* We can use loops to itrate through the value of an Array.
+
+                                                               ARRAYS BUILT_IN METHODS
+
+
+.length - It will return the length of an Array, ex- const arr = ["Ajay","Sharma","JavaScript"]
+                                                     let x = arr.length
+.toString() - It will convert the array to string. ex- let x = arr.toString()
+
+.toJoin() - The join() method also joins all array elements into a string. It behaves just like toString(), but in addition you can specify the separator ex- let x = arr.toJoin("*")
+
+.toPop() - It will remove the last element from an array
+
+.toPush() - It will add the element in the end of an array
+
+.shift() - It will remove the first element from the array
+
+.unshift() - It will add the element at the first position
+
+delets() - It will delete the element present in the array but it will leave a hole in an array, meaning it will leave a undefined value at the deletion index hence the length will remain the same, NOTE- Always use shift and pop method to remove items
+ex-  const fruits = ["Banana", "Orange", "Apple", "Mango"];
+     delete fruits[0];
+
+*concat() - It will concat any number of arrays, it will return a new array. We can also concat a string to an array, the string will take the last position in the array. ex-
+const arr1 = ["Cecilie", "Lone"];
+const arr2 = ["Emil", "Tobias", "Linus"];
+const arr3 = ["Robin", "Morgan"];
+const myChildren = arr1.concat(arr2, arr3);
+
+.splice() - this method is used to insert element at the desired position and we can also use it to remove elements from an array at the same time. it will take 4 arguments and it will remove the desired elements from the array.
+ex 1-  const fruits = ["Banana", "Orange", "Apple", "Mango"];
+     fruits.splice(2, 0, "Lemon", "Kiwi");
+
+The first parameter (2) defines the position where new elements should be added (spliced in).
+
+The second parameter (0) defines how many elements should be removed.
+
+The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
+
+The splice() method returns an array with the deleted items:
+
+ex-2 const fruits = ["Banana", "Orange", "Apple", "Mango"];
+     fruits.splice(0, 1);
+
+The first parameter (0) defines the position where new elements should be added (spliced in).
+
+The second parameter (1) defines how many elements should be removed.
+
+The rest of the parameters are omitted. No new elements will be added.
+
+.slice() _ same as slice in string.
+
+                                                                  ARRAY SORT
+
+.sort() - This method sort the array wrt to alphabatical order like words in dictionary. 
+    NOTE- We cannot use this to sort numbers because in this method first it will convert the number into ascii or UTF-16 values then it start sorting so we get false result ex- const arr = [98,46,67,11,2,3,1] after sorting it will give-[1,11,2,3,46,67,98] as seen it is not in ascending order. so to get over this problem we use comprasion operator. syntax- arr.sort(function(a,b) { return a - b};) this will give ascending value and arr.sort(function(a,b){ return b - a};) this will return descending value.
+
+Basically this function work on this scenario -
+function(a,b){
+  if a > b{
+    return 1;
+}
+  if a < b{
+    return -1;
+}
+  if a==b{
+    return 0;
+}
+}
+So here if value is less than 0,then this function will swap the position of the a and b in array, if value is more than 0 then it wont swap and if value is 0 then it will remain unchanged 
+
+                                                                IF-ELSE IF-ELSE
+it is a conditional sentence just as in python
+syntax= if(age>12){
+          return 'allow';
+        }
+        else if(age==12){
+          return 'wait';
+        }
+        else{
+          return 'go home';}
+
+                                                               SWITCH-CASE
+
+It is used when we have multiple conditions, syntax ->
+
+switch(expression){
+  case 1:
+          break;
+  case 2:
+          break;
+  case 3: 
+          break;
+
+  default: 
+          break;
+}
+
+Here we write multiple statements and conditions and default is executed when none of the cases executed and it is not mandatory.
+
+                                                             LOOPS- FOR
+
+
+*for loop- syntax- for (expression 1; expression 2; expression 3) {
+                    // code block to be executed
+                  } 
+Expression 1 is executed (one time) before the execution of the code block.
+
+Expression 2 defines the condition for executing the code block.
+
+Expression 3 is executed (every time) after the code block has been executed.
+NOTE -> These all expressions are optional
+NOTE -> we can declare multiple variable in expression 1
+ex-
+for (let i = 0; i < 5; i++) {                            
+  text += "The number is " + i + "<br>";
+}
+
+* for in loop-> it act likes the range function in python. It is also use to transverse through the object. In object it will return the key of the object and through key we can access the values of those keys 
+ex-> const arr=["a","b","c","d"];
+let txt="";
+for( const i in arr){
+txt += arr[i] + "<br>";
+}
+
+
+* forEach() -> It is a method inside an array, it grabs one value at a time and pass that value to a function to perform some task. ont by one it passes all the values of array into that function.
+syntax->
+const numbers = [45, 4, 9, 16, 25];
+
+let txt = "";
+numbers.forEach(myFunction);
+
+function myFunction(value, index, array) {
+  txt += value;
+}
+
+* for of -> It is used to transverse through every element in an array,string etc.It is similar to for loop in python" for i in array"
+ex-
+const cars = ["BMW", "Volvo", "Mini"];
+
+let text = "";
+for (let x of cars) {
+  text += x;
+}
+
+                                                                   WHILE
+
+*while ->syntax-> while (condition) {
+                   // code block to be executed
+                 }
+ex->
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+
+* do while loop ->It speciality is that it will atleast run once if conditions fails, rest same as while loop. syntax ->
+do {
+  // code block to be executed
+}
+while(condition);
+
+ex->
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);
+
+break - it is a keyword which is used to come out of a looping statement. ex->
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  text += "The number is " + i + "<br>";
+}
+
+continue - It is used to skip the current execution and moves on the next iteration if the conditions proves to be true,ex->
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { continue; }
+  text += "The number is " + i + "<br>";
+}
+
+                                                          SETS
+*It doesnt allow duplication
+*syntax to create set-> const a = new set();
+
+Methods os sets are ->
+new Set()	Creates a new Set
+add()	        Adds a new element to the Set,ex-> a.add("ab"):
+delete()	Removes an element from a Set.ex-> a.delete("ab");
+has()	        Returns true if a value exists in the Set
+forEach()	Invokes a callback for each element in the Set
+values()	Returns an iterator with all the values in a Set. It gives the element of sets when applied with for set ex->
+let text = "";
+for (const x of letters.values()) {
+  text += x;
+}
+.size-> gives the length of the set
+
+                                                         MAPS
+*It is like a dictionary but key and value is seprated by a comma
+*syntax -> const a = new map(); ex -> const a = new map([['ajay',25],['javascript','Learn;]]);
+* it is directly itrable
+*Keys can be of any data type, in object it is limited to string or symbol
+*keys are followed by insertion.
+
+some methods of maps are->
+new Map()	Creates a new Map
+set()	        Sets the value for a key in a Map ex-> a.set('ajay',26); , we can also update any element by this method
+get()	        Gets the value for a key in a Map , It takes key as a parameter and returns the value of it
+delete()	Removes a Map element specified by the key, it deletes the existing pair/pairs
+has()	        Returns true if a key exists in a Map
+forEach()	Calls a function for each key/value pair in a Map
+let text = "";
+fruits.forEach (function(value, key) {
+  text += key + ' = ' + value;
+})
+entries()	Returns an iterator with the [key, value] pairs in a Map, It will return both keys and values, ex->
+let text = "";
+for (const x of fruits.entries()) {
+  text += x;
+}
+
+                                                      ERROR HANDELING
+In JS we use try catch finaly throw code of block to handle error
+try{} -> here we put our code which is needed to be tested
+catch(err){} -> this will throw an error if try block fails
+throw" " -> this will throw a custom made error
+finally{} -> The finally statement lets you execute code, after try and catch, regardless of the result
+
+ex->
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Please input a number between 5 and 10:</p>
+
+<input id="demo" type="text">
+<button type="button" onclick="myFunction()">Test Input</button>
+<p id="p01"></p>
+
+<script>
+function myFunction() {
+  const message = document.getElementById("p01");
+  message.innerHTML = "";
+  let x = document.getElementById("demo").value;
+  try {
+    if(x.trim() == "") throw "empty";
+    if(isNaN(x)) throw "not a number";
+    x = Number(x);
+    if(x < 5) throw "too low";
+    if(x > 10) throw "too high";
+  }
+  catch(err) {
+    message.innerHTML = "Input is " + err;
+  }
+}
+</script>
+
+</body>
+</html>
+  
+                                                                   USE STRICT
+It is a common practice which allows you to declare every variable, if variable is undeclared then it will throw an error.
+syntax->  "use strict";  , we can use this at the begning of the code or begning of the function.
+you cannot delete a varibale inside this mode
+this keyword is undefined in strict mode
+
+                                                                 This
+
+this keyword is used to reffer to the object ex->
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+In HTML event handlers, this refers to the HTML element that received the event, ex->
+<button onclick="this.style.display='none'">Click to Remove Me!</button>
+
+                                                                 ARROW FUNCTION
+
+It is a shortcut method to write a function
+syntax- 
+hello = () => {
+  document.getElementById("demo").innerHTML += this;
+}
+*If it takes one parameter then we can skip paranthesis ,ex-> hello = val => "Hello " + val;
+* It is only used when we have only one statement inside function
+                                                                     
+
+                                                              CLASS
+constructor is mandatory in JS, if we dont provide constructor to a class then JS will automatically provide it to the class
+
+syntax-
+class ClassName {
+  constructor() { ... }
+}
+
+ex->
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+}
+const myCar1 = new Car("Ford", 2014);
+const myCar2 = new Car("Audi", 2019);
+NOTE -> this will create 2 object, class is a template to create object
+ ex-2 
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age(x) {
+    return x - this.year;
+  }
+}
+
+const date = new Date();
+let year = date.getFullYear();
+
+const myCar = new Car("Ford", 2014);
+document.getElementById("demo").innerHTML=
+"My car is " + myCar.age(year) + " years old.";
+
+
+
+
+
+
+
+
+
+
+                                                             

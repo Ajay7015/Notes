@@ -1,0 +1,78 @@
+1) It is a server-scripting language or backend language, we can store the input from the forms to a database, we can request from server and etc.
+
+2) syntax -> <?php
+               code here
+             ?>
+so this is the syntax of php. it is hiddden and cannot be seen to the client , anything inside the php tags is hidden.
+
+3) to create a variable we always start it with a $ sign, ex-> $var1 , $var2. it is dynamically typed meand we dont have to specify the type of variable.
+
+4)// single line comments, /* multiline comments */
+
+5) var_dump() -> this function used to tell the type of var
+
+6) Operators same as JS 
+logical -> and(&&) , or(||), not(!) ,xor , we can use it in a alphabetical or symbol form.
+
+7) define() -> this method is used to create a constant ,ex-> define("pi",3.14);
+
+8) ; this is must, without semicollon our code will give error, it should be present in the end of the code. 
+
+9) array -> It is a collection of data, syntax-> $arr = array('Ajay','Sharma','18');
+
+10) count -> it is a length method it gives the number of element present in array.
+
+11) echo -> similar to print method in python. php is case insensitive. ex-> EcHo "How are you?";
+
+12) if , else if , else same as JS, Loops same as JS.
+
+13) for concanating strings we use . method, ex-> "this is to show continate". $ver ."thanks"
+
+14) Supervariables -> these are the variables which can be accessed from anywhere. ex-> $_POST , $_GET , $_SERVER etc.
+
+15) $_POST -> this is used in <form> and it has attribute called method which takes POST and GET as argument, POST-> It is secure method and to save input from the form to database. GET -> this method also used to save information but it is unsecure and saves every user details in url.
+
+16)  <?php 
+    $servername = 'localhost';
+    $username = 'root';
+    $password = "";
+    $database = "Ajaydb"
+
+    $con = mysqli_connect($servername, $username, $password, $database);
+    if(!$con){
+        Die("Database couldn't connect !". mysqli_connect_error());
+    }
+    else{
+        echo "Connection Successful !!";
+    }
+    ?>
+this is the standard method to connect database to a server.
+
+17) we can create database using php and using xampp also, both methods are good.
+
+18) mysqli_query() -> it takes 2 args first is connection to server and second is sql query that we want to run. ex->
+$sql3 = "SELECT * from `one`";
+$res = mysqli_query($con, $sql3);
+
+19)mysqli_connect() this method takes argument such as username , servername, password, database. it is used to create server.
+
+20) mysqli_num_rows($res) -> this method gives the number of rows in database.
+
+21) mysqli_fetch_assoc($res) -> this method will fetch the records from the database only one record at a time in a serialwise manner if we write this 2 time then it will give first 2 records only. 
+
+22) we use while loop to show all the recordsl, ex->
+  while($rows = mysqli_fetch_assoc($res)){
+            echo $rows['s.no'] .')'. $rows['name']. 'your email is: '.$rows['email']. 'and your password is: '.$rows['password'].'<br>';
+        };
+
+23) mysqli_affected_rows($con) -> It will give you the number of rows that are affected due to updation query.
+
+24) Include/Require -> It is a keyword used to import external files to the project. only difference is if the file we want to export is missing then include will only show waerning and run the entire code  but require will throw error and our code wont excecute.
+
+25) COOKIES -> These are used to remember the user, what user did on the webapp or website and according to it, it will give the better experience to the user. suppose user went to amazon app and searched for phones so it will automatically show you cars when you again visit website. 
+
+syntax to create cookie-> setcookie ( name , value ,expiration time , path = ""); ex-> setcookie("category", "Books", time() + 86400, "/"); 
+
+26) SESSION -> These are used to remember the user information like once you logged into a website then it will remember that youre logged in even if you left that page and visit another website. syntax -> session_start(), session_destroy()-> It will end the session(logged out)
+
+
