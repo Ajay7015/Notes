@@ -55,6 +55,7 @@
 24)git commit --ammend -> this will open the vim editor and we can make changes to the comments and messages.
 
 25)git restore --staged -> It is used to bring staged file to unstaged condition.
+        #git restore -> THis cmd will bring all the files to the previosuly commited state.
 
 26)git checkout -- file_name -> suppose you modified a file by mistake that has some important information and you want previous saved data back then this cmd is very helpful. This cmd will revert the changes back to orignal.
         #git checkout -f -> It is used to undo all the chanages we did in all the files.
@@ -65,4 +66,15 @@
 
 29)git remote -v -> Now this is used give us the 2 files that is used to fetch/pull and push.
 
-30)
+30)git push -u origin main -> this cmd is used to push our repositry to github.
+
+31)git config --global alias.st status -> This cmd is used to give alias name to the existing cmds, this cmd will change the git status to git st. we just write the cmd name without using git and if their is space in between the cmds then we will use single or double quotes.
+
+
+#----------------------------------------------------- B R A N C H I N G ------------------------------------------------------------------------------#
+
+Suppose youre working on a live project, that project will be on a master branch and you want to do some changes, then you will duplicate the master branch and work on that without interfering the master branch so this funcitonalty is very useful. and we can merge our changes to the master branch.
+
+32)git checkout -b name -> This cmd will do two task, it will create a cope of master branch and it will take you to that branch. Here the name is the name you give to that cloned branch.
+
+33) git checkout master -> This will again take you back to master branch.
